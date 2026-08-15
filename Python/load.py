@@ -1,4 +1,5 @@
 import logging
+import sys
 
 from sqlalchemy import text
 
@@ -11,7 +12,7 @@ from transform import transform_customers
 # ==========================================
 
 logging.basicConfig(
-    filename="../Documentation/logs/etl_pipeline.log",
+    stream=sys.stdout,
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )

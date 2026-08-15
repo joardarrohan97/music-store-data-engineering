@@ -1,0 +1,10 @@
+.env
+.git
+.gitignore
+Python/venv/
+Python/__pycache__/
+*.pyc
+.DS_Store
+Documentation/logs/
+Data/
+Notebooks/
