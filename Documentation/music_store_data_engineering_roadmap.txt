@@ -1,0 +1,570 @@
+MUSIC STORE DATA ENGINEERING PROJECT
+=====================================
+
+Goal
+----
+Turn the existing Music Store PostgreSQL database into a complete,
+end-to-end data engineering portfolio project.
+
+TARGET ARCHITECTURE
+-------------------
+
+                    MUSIC STORE
+                         |
+                         v
+                 PostgreSQL Source
+                         |
+                         | Extract
+                         v
+                       Python
+                     ETL / ELT
+                         |
+                         v
+                  Data Warehouse
+                 PostgreSQL/Snowflake
+                         |
+                         v
+                       dbt
+                Transform / Model
+                         |
+                         v
+                  Power BI / BI
+
+
+Later, orchestration will be added:
+
+                    Apache Airflow
+                         |
+            +------------+------------+
+            v            v            v
+         Extract      Transform      Load
+         Python         dbt        Warehouse
+
+
+FINAL TARGET ARCHITECTURE
+-------------------------
+
+PostgreSQL
+     |
+     v
+Python
+     |
+     v
+Airflow
+     |
+     v
+AWS S3 / Data Lake
+     |
+     v
+PySpark
+     |
+     v
+Snowflake
+     |
+     v
+dbt
+     |
+     v
+Power BI
+
+
+TOOLS TO LEARN
+==============
+
+LEVEL 1 - FOUNDATION
+--------------------
+
+1. PostgreSQL
+   Status: Already installed and working.
+
+   Learn:
+   - SELECT
+   - WHERE
+   - GROUP BY
+   - HAVING
+   - ORDER BY
+   - LIMIT
+   - DISTINCT
+   - JOIN
+   - Subqueries
+   - CTEs
+   - CASE
+   - Window functions
+   - Date functions
+   - UNION
+   - Views
+   - Indexes
+   - Primary keys
+   - Foreign keys
+   - Constraints
+   - Transactions
+   - EXPLAIN
+   - EXPLAIN ANALYZE
+   - Query optimization
+
+
+2. Python
+   Importance: Very High
+
+   Use Python for:
+   - Data extraction
+   - Data cleaning
+   - Data transformation
+   - Data validation
+   - Data loading
+   - API calls
+   - File processing
+   - Pipeline automation
+
+   Libraries:
+   - pandas
+   - psycopg / psycopg2
+   - SQLAlchemy
+   - requests
+
+   Later:
+   - PySpark
+   - boto3
+
+
+3. Git + GitHub
+   Importance: Very High
+
+   Learn:
+   - git init
+   - git clone
+   - git add
+   - git commit
+   - git push
+   - git pull
+   - git branch
+   - git merge
+
+   Suggested project structure:
+
+   music-store-data-engineering/
+   |
+   +-- dags/
+   +-- src/
+   +-- sql/
+   +-- dbt/
+   +-- tests/
+   +-- config/
+   +-- docker/
+   +-- README.md
+   +-- requirements.txt
+   +-- docker-compose.yml
+
+
+LEVEL 2 - BUILD A REAL PIPELINE
+--------------------------------
+
+4. Docker
+   Importance: Very High
+
+   Use Docker to run services in containers.
+
+   Possible containers:
+   - PostgreSQL
+   - Airflow
+   - dbt
+   - Spark
+
+   Learn:
+   - docker pull
+   - docker run
+   - docker ps
+   - docker exec
+   - docker logs
+   - docker compose up
+   - docker compose down
+
+
+5. Apache Airflow
+   Importance: Very High
+
+   Airflow will orchestrate the pipeline.
+
+   Example:
+
+   Extract PostgreSQL
+          |
+          v
+   Validate Data
+          |
+          v
+   Transform
+          |
+          v
+   Load Warehouse
+          |
+          v
+   Run dbt
+          |
+          v
+   Data Quality
+          |
+          v
+   Success
+
+   Learn:
+   - DAG
+   - Task
+   - Operator
+   - Dependency
+   - Schedule
+   - Retry
+   - XCom
+   - Variables
+   - Connections
+   - Backfill
+
+
+LEVEL 3 - ANALYTICS ENGINEERING
+--------------------------------
+
+6. dbt
+   Importance: Very High
+
+   Use dbt for SQL transformations and data modeling.
+
+   Example:
+
+   raw_customer
+        |
+        v
+   stg_customer
+        |
+        v
+   dim_customer
+
+   And:
+
+   raw_invoice
+        |
+        v
+   stg_invoice
+        |
+        v
+   fct_sales
+
+   Learn:
+   - Models
+   - Sources
+   - Seeds
+   - Tests
+   - Macros
+   - Snapshots
+   - Documentation
+   - Lineage
+   - Incremental models
+
+
+LEVEL 4 - DATA WAREHOUSE
+------------------------
+
+7. Snowflake
+   Importance: Very High
+
+   Planned architecture:
+
+   PostgreSQL
+        |
+        v
+   Python
+        |
+        v
+   Snowflake
+        |
+        v
+   dbt
+        |
+        v
+   Power BI
+
+   Learn:
+   - Database
+   - Schema
+   - Warehouse
+   - Stage
+   - File formats
+   - COPY INTO
+   - Snowpipe
+   - Streams
+   - Tasks
+   - Time Travel
+   - Clustering
+   - Roles
+   - RBAC
+
+
+LEVEL 5 - CLOUD
+----------------
+
+8. AWS
+   Focus on these services:
+
+   - S3
+   - IAM
+   - EC2
+   - Lambda
+   - CloudWatch
+   - Glue
+   - RDS
+
+   Main project use:
+
+   PostgreSQL
+        |
+        v
+      Python
+        |
+        v
+      AWS S3
+        |
+        v
+    Snowflake
+
+
+LEVEL 6 - BIG DATA
+------------------
+
+9. Apache Spark / PySpark
+
+   Do NOT start with Spark.
+
+   Learn it after becoming comfortable with:
+   - SQL
+   - Python
+   - PostgreSQL
+   - ETL
+   - Airflow
+   - Docker
+   - dbt
+   - Data Warehousing
+
+   Learn:
+   - Spark DataFrame
+   - Spark SQL
+   - RDD basics
+   - Partitions
+   - Shuffles
+   - Joins
+   - Caching
+   - PySpark
+
+
+LEVEL 7 - STREAMING
+-------------------
+
+10. Apache Kafka
+
+   Learn later.
+
+   Example:
+
+   Customer purchases song
+             |
+             v
+           Kafka
+             |
+             v
+       Kafka Consumer
+             |
+             v
+           Python
+             |
+             v
+       Data Warehouse
+
+   Learn:
+   - Producer
+   - Consumer
+   - Topic
+   - Partition
+   - Offset
+   - Consumer Group
+   - Broker
+
+
+11. Power BI
+
+   Final analytics layer.
+
+   Example dashboard metrics:
+   - Total Revenue
+   - Total Orders
+   - Total Customers
+   - Average Order Value
+   - Top Artist
+   - Top Genre
+   - Top Country
+   - Top Customers
+   - Customer Lifetime Value
+   - Repeat Customers
+   - Average Customer Spend
+
+
+12. DATA QUALITY
+
+   Important checks:
+   - customer_id cannot be NULL
+   - invoice_id must be unique
+   - invoice total must be >= 0
+   - track_id must exist
+   - invoice_line must reference invoice
+
+   Tools:
+   - dbt tests
+   - Great Expectations
+
+
+FINAL PORTFOLIO PROJECT
+=======================
+
+Project name:
+Music Store End-to-End Data Engineering Platform
+
+Final architecture:
+
+                    +-----------------+
+                    |   Music Store   |
+                    |   PostgreSQL    |
+                    +--------+--------+
+                             |
+                             v
+                    +-----------------+
+                    |     Python      |
+                    |   Extraction    |
+                    +--------+--------+
+                             |
+                             v
+                    +-----------------+
+                    |      AWS S3     |
+                    |    Data Lake    |
+                    +--------+--------+
+                             |
+                             v
+                    +-----------------+
+                    |     PySpark     |
+                    |   Processing    |
+                    +--------+--------+
+                             |
+                             v
+                    +-----------------+
+                    |    Snowflake    |
+                    | Data Warehouse  |
+                    +--------+--------+
+                             |
+                             v
+                    +-----------------+
+                    |      dbt        |
+                    | Transformations |
+                    +--------+--------+
+                             |
+                             v
+                    +-----------------+
+                    |    Power BI     |
+                    |    Dashboard    |
+                    +-----------------+
+
+                    ^
+                    |
+              Apache Airflow
+              Orchestration
+
+
+LEARNING ORDER
+==============
+
+Stage 1   PostgreSQL + SQL             [CURRENT]
+Stage 2   Python
+Stage 3   Git + GitHub
+Stage 4   ETL Pipeline
+Stage 5   Docker
+Stage 6   Apache Airflow
+Stage 7   dbt
+Stage 8   Snowflake
+Stage 9   AWS S3
+Stage 10  PySpark
+Stage 11  Kafka
+Stage 12  Power BI
+Stage 13  Data Quality
+Stage 14  Production-style project
+
+
+FIRST PROJECT ITERATION
+=======================
+
+Do NOT install all tools at once.
+
+Start with:
+
+   Music Store PostgreSQL
+             |
+             v
+           Python
+             |
+             v
+       Extract data
+             |
+             v
+      Transform data
+             |
+             v
+         Load data
+             |
+             v
+   PostgreSQL warehouse tables
+
+Then progressively upgrade the same project:
+
+   PostgreSQL
+       |
+       v
+     Python
+       |
+       v
+     Docker
+       |
+       v
+    Airflow
+       |
+       v
+      S3
+       |
+       v
+   Snowflake
+       |
+       v
+      dbt
+       |
+       v
+   Power BI
+
+
+MAIN OBJECTIVE
+==============
+
+The goal is not simply to learn individual tools.
+
+The goal is to understand how a real data engineering system works
+from source data all the way to analytics.
+
+By completing this project, you will practice:
+
+- SQL
+- Python
+- ETL / ELT
+- Data modeling
+- Data warehousing
+- Cloud storage
+- Workflow orchestration
+- Data transformation
+- Big data processing
+- Streaming concepts
+- Data quality
+- Business intelligence
+- Git/GitHub
+- Docker
+- Production-style project organization

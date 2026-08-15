@@ -1,0 +1,8 @@
+2026-08-16 04:46:04,009 - INFO - ========== ETL PIPELINE STARTED ==========
+2026-08-16 04:46:04,009 - INFO - Starting extraction
+2026-08-16 04:46:04,141 - INFO - Starting transformation
+2026-08-16 04:46:04,147 - INFO - Starting load
+2026-08-16 04:46:04,147 - INFO - Starting load step
+2026-08-16 04:46:04,220 - INFO - Loaded 59 rows into customer_clean
+2026-08-16 04:46:04,222 - INFO - Validation successful: 59 rows
+2026-08-16 04:46:04,222 - INFO - ========== ETL PIPELINE COMPLETED ==========
