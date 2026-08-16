@@ -1,86 +1,42 @@
-# Music Store Data Engineering Project
+# 🎵 Music Store Data Engineering Project
 
-An end-to-end data engineering project built using the Music Store
-database.
+An end-to-end data engineering project built around the Chinook/Music Store database.
 
-## Current Architecture
+The project demonstrates how to build, transform, validate, containerize, and orchestrate a data pipeline using PostgreSQL, Python, Docker, and Docker Compose.
 
-PostgreSQL
-    ↓
-Python
-    ↓
-Extract
-    ↓
-Transform
-    ↓
-Load
-    ↓
-Data Validation
-    ↓
-PostgreSQL
+---
 
-## Technologies
+## 🚀 Project Overview
 
-- PostgreSQL
-- pgAdmin 4
-- Python
-- Pandas
-- Psycopg
-- SQLAlchemy
-- python-dotenv
-- Git
+This project starts with a PostgreSQL Music Store database and builds a complete ETL pipeline.
 
-## Current ETL Pipeline
+The current pipeline:
 
-The pipeline extracts customer data from the PostgreSQL Music Store
-database, transforms the data using Pandas, loads the transformed
-data into a new PostgreSQL table, and validates the loaded records.
+1. Extracts customer data from PostgreSQL
+2. Transforms the data using Pandas
+3. Loads the transformed data into a clean target table
+4. Validates the loaded data
+5. Logs pipeline execution
+6. Runs inside Docker
+7. Uses Docker Compose to manage PostgreSQL and the ETL service
 
-### Extract
+---
 
-Source table:
-
-`customer`
-
-### Transformations
-
-- Remove leading and trailing whitespace
-- Convert email addresses to lowercase
-- Remove duplicate records
-
-### Load
-
-Target table:
-
-`customer_clean`
-
-### Validation
-
-The pipeline validates that the number of records loaded into the
-target table matches the number of transformed records.
-
-## Project Structure
+## 🏗️ Current Architecture
 
 ```text
-Music Store Project/
-│
-├── Python/
-│   ├── config.py
-│   ├── extract.py
-│   ├── transform.py
-│   ├── load.py
-│   └── test_connection.py
-│
-├── SQL/
-├── Airflow/
-├── dbt/
-├── Docker/
-├── Data/
-├── Notebooks/
-│
-├── Documentation/
-│   └── logs/
-│
-├── .gitignore
-├── requirements.txt
-└── README.md
+                 Docker Compose
+                       │
+             ┌─────────┴─────────┐
+             │                   │
+             ▼                   ▼
+      PostgreSQL             Python ETL
+       Container             Container
+             │                   │
+             │◄──────────────────┘
+             │
+             ▼
+      music_store_analysis
+             │
+             ▼
+       customer_clean
