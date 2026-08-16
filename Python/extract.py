@@ -1,7 +1,7 @@
 import pandas as pd
 from sqlalchemy import create_engine
 
-from config import DB_HOST, DB_PORT, DB_NAME, DB_USER
+from config import DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PASSWORD
 
 
 def get_database_engine():
@@ -9,7 +9,8 @@ def get_database_engine():
 
     database_url = (
         f"postgresql+psycopg://"
-        f"{DB_USER}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
+        f"{DB_USER}:{DB_PASSWORD}@"
+        f"{DB_HOST}:{DB_PORT}/{DB_NAME}"
     )
 
     return create_engine(database_url)

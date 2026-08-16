@@ -1,0 +1,35 @@
+services:
+
+  postgres:
+    image: postgres:17
+    container_name: music-store-postgres
+    environment:
+      POSTGRES_DB: music_store_analysis
+      POSTGRES_USER: musicstore
+      POSTGRES_PASSWORD: musicstore_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - music_store_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U musicstore -d music_store_analysis"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  etl:
+    build:
+      context: .
+      dockerfile: Docker/Dockerfile
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: music_store_analysis
+      DB_USER: musicstore
+      DB_PASSWORD: musicstore_password
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  music_store_postgres_data:
